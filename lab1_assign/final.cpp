@@ -386,13 +386,17 @@ void secondPass(const std::string& input_file) {
                 }
             }else if (addressmode == "I") {
                 // Immediate address mode, print as is
-                operand=instr%1000;
+                string err;
                 if (operand >= 900)
                 {
                     operand = 999;
-                    errorMessage = "Error: Illegal immediate operand; treated as 999";
+                     err = "Error: Illegal immediate operand; treated as 999";
                 }
-                std::cout << std::setfill('0') << std::setw(3) << count << ": " << std::setw(4) << instr << "\n";
+                else 
+                {
+                     err= "";
+                }
+                std::cout << std::setfill('0') << std::setw(3) << count << ": " << err <<  std::setw(4) << instr << "\n";
             } else if (addressmode == "A") {
                 // Absolute address mode
                 if (operand < Machine_Size) {
